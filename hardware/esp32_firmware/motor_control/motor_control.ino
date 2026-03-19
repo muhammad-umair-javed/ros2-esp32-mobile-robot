@@ -12,7 +12,7 @@ const int IN4 = 14;
 const int PWM1 = 32;
 const int PWM2 = 33;
 
-const int MOTOR_SPEED = 150; // default speed
+const int MOTOR_SPEED = 155; // default speed
 int pwm1Value = MOTOR_SPEED;
 int pwm2Value = MOTOR_SPEED;
 
@@ -33,12 +33,21 @@ void setup() {
 }
 
 void loop() {
+  if (pwm1Value == 0){
+    pwm1Value = MOTOR_SPEED;
+    pwm2Value = MOTOR_SPEED;
+  }
   if (Serial.available()) {
     char command = Serial.read();
+    
+    // Ignore newline or carriage return characters
+    if (command == '\n' || command == '\r') return;
+
     commandMotor(command);
     Serial.print("Command Executed: ");
     Serial.println(command);
   }
+  delay(20);
 }
 
 void commandMotor(char cmd) {
@@ -63,7 +72,7 @@ void commandMotor(char cmd) {
       digitalWrite(IN4, HIGH);
 
       // Decrease speed gradually
-      pwm1Value = clampPWM(pwm1Value - 20, 0, 255);
+      pwm1Value = clampPWM(pwm1Value - 20, 150, 255);
       pwm2Value = pwm1Value;
       analogWrite(PWM1, pwm1Value);
       analogWrite(PWM2, pwm2Value);
