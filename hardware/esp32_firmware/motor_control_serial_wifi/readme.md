@@ -1,4 +1,4 @@
-# ESP32 Robot – Phase 1: Motor Control via Serial Communication
+# ESP32 Robot – Phase 1: Motor Control via Serial and WIFI Communication
 
 ## Overview
 
