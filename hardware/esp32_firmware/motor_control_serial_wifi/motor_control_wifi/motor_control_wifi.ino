@@ -17,8 +17,16 @@ IPAddress pcIP(192, 168, 0, 111);
 # define UDP_PORT 4210
 WiFiUDP UDP;
 char packet[256];
-int reply[] = {100, 20};
 int lastSend = 0;
+
+// Encoder Data structure (for later use)
+struct EncoderData {
+  int32_t left_ticks;
+  int32_t right_ticks;
+  uint32_t timestamp;
+};
+
+EncoderData encData;    // Declare instance of EncoderData datatype
 
 // ================= WIFI EVENT HANDLER =================
 void WiFiEventHandler(WiFiEvent_t event) {
@@ -85,14 +93,11 @@ void udp_receive_send(){
     Serial.print("Packet received: ");
     Serial.println(packet);
   
-    // Send at 10 Hz
-  if (millis() - lastSend > 100) {
-    lastSend = millis();
 
     UDP.beginPacket(UDP.remoteIP(), UDP.remotePort());
-    UDP.write((uint8_t*)reply, sizeof(reply));
+    UDP.write((uint8_t*)&encData, sizeof(encData));
     UDP.endPacket();
-  }
+  
   }
 }
 
@@ -112,10 +117,13 @@ void setup() {
 
 // ================= LOOP =================
 void loop() {
+  // Dummy values of Encoder
+  encData.left_ticks = 100;
+  encData.right_ticks = 30;
+  encData.timestamp = millis();
 
   udp_receive_send();
+  delay(200);
   
 
-
-  
 }
