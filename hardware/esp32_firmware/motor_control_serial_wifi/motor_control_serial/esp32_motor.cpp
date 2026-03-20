@@ -10,7 +10,7 @@ const int PWM1 = 32;
 const int PWM2 = 33;
 
 // ----------------- SPEED -----------------
-const int MOTOR_SPEED = 155;
+int MOTOR_SPEED = 155;
 int pwm1Value = MOTOR_SPEED;
 int pwm2Value = MOTOR_SPEED;
 
@@ -29,6 +29,8 @@ void initMotors() {
 
 // ----------------- MOTOR COMMAND -----------------
 void commandMotor(char cmd) {
+  MOTOR_SPEED = clampPWM(MOTOR_SPEED);
+  cmd = toupper(cmd);
   switch (cmd) {
     case 'F': // Forward
       digitalWrite(IN1, HIGH);
@@ -36,8 +38,8 @@ void commandMotor(char cmd) {
       digitalWrite(IN3, HIGH);
       digitalWrite(IN4, LOW);
 
-      analogWrite(PWM1, pwm1Value);
-      analogWrite(PWM2, pwm2Value);
+      analogWrite(PWM1, MOTOR_SPEED);
+      analogWrite(PWM2, MOTOR_SPEED);
       break;
 
     case 'B': // Backward
@@ -46,8 +48,8 @@ void commandMotor(char cmd) {
       digitalWrite(IN3, LOW);
       digitalWrite(IN4, HIGH);
 
-      analogWrite(PWM1, pwm1Value);
-      analogWrite(PWM2, pwm2Value);
+      analogWrite(PWM1, MOTOR_SPEED);
+      analogWrite(PWM2, MOTOR_SPEED);
       break;
 
     case 'L': // Turn Left
@@ -56,8 +58,8 @@ void commandMotor(char cmd) {
       digitalWrite(IN3, HIGH);
       digitalWrite(IN4, LOW);
 
-      analogWrite(PWM1, pwm1Value);
-      analogWrite(PWM2, pwm2Value);
+      analogWrite(PWM1, MOTOR_SPEED);
+      analogWrite(PWM2, MOTOR_SPEED);
       break;
 
     case 'R': // Turn Right
@@ -66,8 +68,8 @@ void commandMotor(char cmd) {
       digitalWrite(IN3, LOW);
       digitalWrite(IN4, HIGH);
 
-      analogWrite(PWM1, pwm1Value);
-      analogWrite(PWM2, pwm2Value);
+      analogWrite(PWM1, MOTOR_SPEED);
+      analogWrite(PWM2, MOTOR_SPEED);
       break;
 
     case 'S': // Stop
@@ -91,8 +93,8 @@ void stopMotors() {
   pwm1Value = 0;
   pwm2Value = 0;
 
-  analogWrite(PWM1, pwm1Value);
-  analogWrite(PWM2, pwm2Value);
+  analogWrite(PWM1, MOTOR_SPEED);
+  analogWrite(PWM2, MOTOR_SPEED);
 }
 
 // ----------------- CLAMP FUNCTION -----------------

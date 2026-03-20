@@ -12,14 +12,12 @@ extern const int PWM1;
 extern const int PWM2;
 
 // ----------------- SPEED -----------------
-extern const int MOTOR_SPEED;
-extern int pwm1Value;
-extern int pwm2Value;
+extern int MOTOR_SPEED;
 
 // ----------------- FUNCTIONS -----------------
 void initMotors();                 // Setup motor pins
 void commandMotor(char cmd);       // Execute motor command
 void stopMotors();                 // Stop both motors
-int clampPWM(int value, int minVal, int maxVal); // Clamp PWM value
+int clampPWM(int value, int minVal = 0, int maxVal = 255); // Clamp PWM value
 
 #endif

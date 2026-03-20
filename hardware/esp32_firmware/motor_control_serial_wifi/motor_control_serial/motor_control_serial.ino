@@ -4,8 +4,7 @@
 void setup() {
   Serial.begin(115200);
   initMotors(); // Initialize motor pins
-  pwm1Value = 150;
-  pwm2Value = 150;
+  MOTOR_SPEED = 200;
 }
 
 void loop() {
