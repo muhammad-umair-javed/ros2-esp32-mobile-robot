@@ -1,8 +1,8 @@
 #include "esp32_udp.h"
 
 // ----------------- CONFIG VALUES -----------------
-const char* ssid = "M_U_J";
-const char* password = "ros2humble";
+char* ssid = "M_U_J";
+char* password = "ros2humble";
 const char* hostname = "ros2-esp32-robot-";
 
 IPAddress local_IP(192, 168, 0, 200);

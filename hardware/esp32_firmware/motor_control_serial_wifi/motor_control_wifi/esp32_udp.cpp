@@ -1,8 +1,8 @@
 #include "esp32_udp.h"
 
 // ----------------- CONFIG VALUES -----------------
-const char* ssid = "M_U_J";
-const char* password = "ros2humble";
+char* ssid = "M_U_J";
+char* password = "ros2humble";
 const char* hostname = "ros2-esp32-robot-";
 
 IPAddress local_IP(192, 168, 0, 200);
@@ -16,8 +16,9 @@ const uint16_t UDP_PORT = 4210;
 WiFiUDP UDP;
 char packet[256];
 
+// Data for communication
 EncoderData encData;
-
+ControlCommand cmd;
 // ================= WIFI EVENT HANDLER =================
 void WiFiEventHandler(WiFiEvent_t event) {
   switch(event) {
@@ -63,20 +64,36 @@ void initWiFi() {
 }
 
 // ================= UDP COMMUNICATION =================
-void udp_receive_send(){
+ControlCommand udp_receive_send() {
+
   int packetSize = UDP.parsePacket();
   if (packetSize) {
     Serial.print("Received packet! Size: ");
     Serial.println(packetSize); 
+
     int len = UDP.read(packet, 255);
     if (len > 0) packet[len] = '\0';
 
     Serial.print("Packet received: ");
     Serial.println(packet);
 
+    // 🔹 Example expected format: "F,150"
+    char dir;
+    int pwmVal;
+
+    if (sscanf(packet, "%c,%d", &dir, &pwmVal) == 2) {
+      cmd.direction = dir;
+      cmd.pwm = constrain(pwmVal, 0, 255);
+      Serial.print(cmd.direction);
+      Serial.print(',');
+      Serial.println(cmd.direction);
+    }
+
     // Send back encoder data
     UDP.beginPacket(UDP.remoteIP(), UDP.remotePort());
     UDP.write((uint8_t*)&encData, sizeof(encData));
     UDP.endPacket();
   }
+
+  return cmd;
 }

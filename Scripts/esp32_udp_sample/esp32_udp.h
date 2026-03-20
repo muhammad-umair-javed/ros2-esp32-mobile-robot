@@ -5,8 +5,8 @@
 #include <WiFiUdp.h>
 
 // ----------------- CONFIG -----------------
-extern const char* ssid;
-extern const char* password;
+extern char* ssid;
+extern char* password;
 extern const char* hostname;
 
 // Static IP configuration

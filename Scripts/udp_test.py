@@ -15,7 +15,22 @@ print("Listening...")
 
 while True:
     # 🔹 Send trigger packet to ESP32
-    message = "hello esp32"
+    direction = input("Enter Direction (F/B/L/R/S): ").upper()
+
+    if direction not in ['F', 'B', 'L', 'R', 'S']:
+        print("Invalid direction!")
+        continue
+
+    try:
+        pwm = int(input("Enter PWM (0-255): "))
+        if not (0 <= pwm <= 255):
+            raise ValueError
+    except:
+        print("Invalid PWM!")
+        continue
+
+    message = f"{direction},{pwm}"
+    print(f'\nDirection, PWM: {message}')
     sock.sendto(message.encode(), (ESP32_IP, ESP32_PORT))
 
     # 🔹 Receive response

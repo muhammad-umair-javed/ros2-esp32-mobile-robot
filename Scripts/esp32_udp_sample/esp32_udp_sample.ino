@@ -1,6 +1,11 @@
 #include "esp32_udp.h"
 
+
 void setup() {
+  // WIFI Credentials
+  ssid = "home";
+  password = "12345678900";
+  
   Serial.begin(115200);
 
   initWiFi();

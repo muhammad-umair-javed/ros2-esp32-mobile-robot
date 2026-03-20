@@ -5,8 +5,8 @@
 #include <WiFiUdp.h>
 
 // ----------------- CONFIG -----------------
-extern const char* ssid;
-extern const char* password;
+extern char* ssid;
+extern char* password;
 extern const char* hostname;
 
 // Static IP configuration
@@ -28,11 +28,16 @@ struct EncoderData {
   int32_t right_ticks;
   uint32_t timestamp;
 };
+struct ControlCommand {
+  char direction;   // 'F', 'B', 'L', 'R'
+  uint8_t pwm;      // 0–255
+};
 
+extern ControlCommand cmd;
 extern EncoderData encData;
 
 // ----------------- FUNCTIONS -----------------
 void initWiFi();
-void udp_receive_send();
+ControlCommand udp_receive_send();
 
 #endif
