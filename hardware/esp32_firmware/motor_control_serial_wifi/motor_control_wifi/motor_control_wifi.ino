@@ -49,11 +49,16 @@ void WiFiEventHandler(WiFiEvent_t event) {
 // ================= WIFI INIT =================
 void initWiFi() {
   WiFi.mode(WIFI_STA);
+
+  // Set custom Hostname
   WiFi.config(INADDR_NONE, INADDR_NONE, INADDR_NONE, INADDR_NONE);
   WiFi.setHostname(hostname);
+
+  // Set static IP address for ESP32
   if (!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS)) {
     Serial.println("Static IP Config Failed!");
   }
+
   WiFi.onEvent(WiFiEventHandler);   // Register event handler
   WiFi.begin(ssid, password);
 
