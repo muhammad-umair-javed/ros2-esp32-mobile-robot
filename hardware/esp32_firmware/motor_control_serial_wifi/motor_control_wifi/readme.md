@@ -1,174 +1,89 @@
-# ESP32 UDP WiFi Communication Boilerplate
+# ESP32 UDP Motor Control System
 
-## 📌 Overview
+## Overview
 
-This project implements a **modular communication framework** between an ESP32 and a host machine (e.g., ROS2 PC) using **WiFi + UDP protocol**.
+This project implements a WiFi-based motor control system using an ESP32 and UDP communication. A Python client sends control commands over the network, and the ESP32 receives these commands to drive motors accordingly.
 
-The goal of this boilerplate is to establish:
+## Features
 
-* Reliable WiFi connection (with auto-reconnect)
-* Static IP configuration for deterministic communication
-* Modular bidirectional UDP communication
-* Event-driven WiFi handling
+* UDP-based wireless communication
+* Real-time motor control
+* Modular code structure (.ino, .h, .cpp separation)
+* Expandable for ROS2 integration
 
-This serves as a **foundation for mobile robot communication**, where commands and sensor data must be exchanged efficiently.
+## Project Structure
 
----
-
-## ⚙️ Features
-
-* ✅ WiFi Station Mode (ESP32 connects to router)
-* ✅ Static IP configuration
-* ✅ Event-based WiFi monitoring
-* ✅ Modular UDP send & receive communication functions
-* ✅ Non-blocking architecture
-* ✅ Easy integration with main program (`setup()` & `loop()` remain clean)
-* ✅ Basic rate control for packet transmission
-
----
-
-## 🌐 Network Configuration
-
-### ESP32 Configuration
-
-```cpp
-IPAddress local_IP(192, 168, 0, 200);
-IPAddress gateway(192, 168, 0, 1);
-IPAddress subnet(255, 255, 255, 0);
+```
+.
+├── esp32_firmware/
+│   ├── motor_control_wifi/
+│   │   ├── motor_control_wifi.ino
+│   │   ├── esp32_motor.h
+│   │   ├── esp32_motor.cpp
+│   │   ├── esp32_udp.h
+│   │   ├── esp32_udp.cpp
+├── Scripts/
+│   ├── udp_test.py
 ```
 
-* ESP32 is assigned a **static IP address** for stable communication
-* Ensures ROS2 node or host machine can always reach the ESP32
+## Hardware Requirements
 
----
+* ESP32 Development Board
+* Motor Driver (e.g., L298N)
+* DC Motors
+* Power Supply
 
-### PC Configuration
+## Software Requirements
 
-```cpp
-IPAddress pcIP(192, 168, 0, 111);
-```
+* Arduino IDE (with ESP32 support)
+* Python 3.x
 
-* This is the IP address of the host machine
-* Used by ESP32 to send data back (e.g., encoder values)
+## Setup Instructions
 
----
+### 1. ESP32 Firmware
 
-## 📡 UDP Communication
-
-### Port Configuration
-
-```cpp
-const uint16_t UDP_PORT = 4210;
-```
-
-* Both ESP32 and PC communicate using this port
-
----
-
-### Data Flow
-
-#### 📥 Receiving Data
-
-* ESP32 listens for incoming UDP packets
-* Incoming data is stored in a buffer (`packet`)
-* Example use case: receiving velocity commands from PC
-
-#### 📤 Sending Data
-
-* ESP32 sends response data back to sender
-* Uses:
+* Open `motor_control_wifi.ino` in Arduino IDE
+* Set your WiFi credentials:
 
 ```cpp
-UDP.beginPacket(UDP.remoteIP(), UDP.remotePort());
-UDP.write((uint8_t*)&encData, sizeof(encData));
-UDP.endPacket();
+ssid = "YOUR_WIFI_NAME";
+password = "YOUR_WIFI_PASSWORD";
 ```
 
-* Ensures reply is sent to the correct client
-* Data sending can be modular and called independently
+* Upload the code to ESP32
 
----
+### 2. Python Client
 
-### 🔁 Communication Frequency
+* Update ESP32 IP address in script:
 
-* Transmission rate can be controlled using `millis()` for timing, e.g., 10 Hz
-* Prevents network flooding
-
----
-
-## 📶 WiFi Handling
-
-### WiFi Mode
-
-```cpp
-WiFi.mode(WIFI_STA);
+```python
+ESP32_IP = "192.168.0.200"
+ESP32_PORT = 4210
 ```
 
-* ESP32 acts as a **client** connecting to a router
+* Run the script:
 
----
-
-### Event-Based System
-
-WiFi events are handled using:
-
-```cpp
-WiFi.onEvent(WiFiEventHandler);
+```bash
+python3 udp_control.py
 ```
 
-Handled events include:
+## Communication Protocol
 
-* Connection start
-* Connection success
-* IP assignment
-* Disconnection
+* UDP is used for low-latency communication
+* Commands are sent as characters:
 
----
+  * `F` → Forward
+  * `B` → Backward
+  * `L` → Left
+  * `R` → Right
+  * `S` → Stop
 
-### Auto-Reconnect
+## Future Work
 
-```cpp
-WiFi.reconnect();
-```
+* Integration with ROS2 nodes
+* Sensor feedback (encoders, IMU)
+* Autonomous navigation
 
-* Automatically reconnects when connection is lost
-
----
-
-## 🧠 Design Considerations
-
-### Why UDP?
-
-* Low latency communication
-* Suitable for real-time robotics
-* Matches ROS2 DDS communication style
-
-### Limitations
-
-* No guaranteed delivery
-* Requires application-level safety mechanisms
-
----
-
-## 🚀 Modular Design
-
-* `esp32_udp.h` and `esp32_udp.cpp` encapsulate WiFi and UDP logic
-* `initWiFi()` handles WiFi setup and event registration
-* `udp_receive_send()` handles both receiving and sending data
-* Main program can focus on higher-level logic like motor control or sensor reading
-* Easy to extend with functions like `sendEncoderData()` or `setPCIP()`
-
----
-
-## 🚀 Future Improvements
-
-* Add command parsing (e.g., `cmd_vel`)
-* Integrate motor control logic
-* Implement watchdog / timeout safety
-* Send encoder feedback continuously
-* Add ROS2 bridge node
-
----
 
 ## 📚 Resources
 
