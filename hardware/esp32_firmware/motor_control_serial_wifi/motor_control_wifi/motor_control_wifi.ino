@@ -3,6 +3,16 @@
 const char* ssid = "M_U_J";
 const char* password = "ros2humble";
 
+const char* hostname = "ros2-esp32-robot-";
+
+// 🔹 Static IP Configuration
+IPAddress local_IP(192, 168, 1, 200);   // choose unused IP
+IPAddress gateway(192, 168, 1, 1);
+IPAddress subnet(255, 255, 255, 0);
+IPAddress primaryDNS(192, 168, 1, 1);
+IPAddress secondaryDNS(0, 0, 0, 0);
+
+
 
 // ================= WIFI EVENT HANDLER =================
 void WiFiEventHandler(WiFiEvent_t event) {
@@ -20,6 +30,8 @@ void WiFiEventHandler(WiFiEvent_t event) {
     case ARDUINO_EVENT_WIFI_STA_GOT_IP:
       Serial.print("Got IP: ");
       Serial.println(WiFi.localIP());
+      Serial.print("MAC Address: ");
+      Serial.println(WiFi.macAddress());
       break;
 
     case ARDUINO_EVENT_WIFI_STA_DISCONNECTED:
@@ -37,6 +49,11 @@ void WiFiEventHandler(WiFiEvent_t event) {
 // ================= WIFI INIT =================
 void initWiFi() {
   WiFi.mode(WIFI_STA);
+  WiFi.config(INADDR_NONE, INADDR_NONE, INADDR_NONE, INADDR_NONE);
+  WiFi.setHostname(hostname);
+  if (!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS)) {
+    Serial.println("Static IP Config Failed!");
+  }
   WiFi.onEvent(WiFiEventHandler);   // Register event handler
   WiFi.begin(ssid, password);
 
