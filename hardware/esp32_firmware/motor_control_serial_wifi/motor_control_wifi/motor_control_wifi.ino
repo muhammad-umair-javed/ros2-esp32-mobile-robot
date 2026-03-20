@@ -9,20 +9,20 @@ void WiFiEventHandler(WiFiEvent_t event) {
 
   switch(event) {
 
-    case WIFI_EVENT_STA_START:
+    case ARDUINO_EVENT_WIFI_STA_START:
       Serial.println("WiFi Started");
       break;
 
-    case WIFI_EVENT_STA_CONNECTED:
+    case ARDUINO_EVENT_WIFI_STA_CONNECTED:
       Serial.println("Connected to AP");
       break;
 
-    case IP_EVENT_STA_GOT_IP:
+    case ARDUINO_EVENT_WIFI_STA_GOT_IP:
       Serial.print("Got IP: ");
       Serial.println(WiFi.localIP());
       break;
 
-    case WIFI_EVENT_STA_DISCONNECTED:
+    case ARDUINO_EVENT_WIFI_STA_DISCONNECTED:
       Serial.println("WiFi Lost Connection!");
       
       Serial.println("Reconnecting...");
@@ -37,7 +37,7 @@ void WiFiEventHandler(WiFiEvent_t event) {
 // ================= WIFI INIT =================
 void initWiFi() {
   WiFi.mode(WIFI_STA);
-  WiFi.onEvent(WiFiEventHandler);   // ✅ Register event handler
+  WiFi.onEvent(WiFiEventHandler);   // Register event handler
   WiFi.begin(ssid, password);
 
   Serial.println("Connecting to WiFi...");
