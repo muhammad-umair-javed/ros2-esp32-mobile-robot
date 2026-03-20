@@ -3,32 +3,66 @@
 const char* ssid = "M_U_J";
 const char* password = "ros2humble";
 
-void initWiFi () {
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
-  Serial.print("Connecting to WiFi ..");
-  while(WiFi.status() != WL_CONNECTED) {
-    Serial.print('.');
-    delay(1000);
+
+// ================= WIFI EVENT HANDLER =================
+void WiFiEventHandler(WiFiEvent_t event) {
+
+  switch(event) {
+
+    case WIFI_EVENT_STA_START:
+      Serial.println("WiFi Started");
+      break;
+
+    case WIFI_EVENT_STA_CONNECTED:
+      Serial.println("Connected to AP");
+      break;
+
+    case IP_EVENT_STA_GOT_IP:
+      Serial.print("Got IP: ");
+      Serial.println(WiFi.localIP());
+      break;
+
+    case WIFI_EVENT_STA_DISCONNECTED:
+      Serial.println("WiFi Lost Connection!");
+      
+      Serial.println("Reconnecting...");
+      WiFi.reconnect();        // 🔁 Auto reconnect
+      break;
+
+    default:
+      break;
   }
-  Serial.println(WiFi.localIP());
 }
 
+// ================= WIFI INIT =================
+void initWiFi() {
+  WiFi.mode(WIFI_STA);
+  WiFi.onEvent(WiFiEventHandler);   // ✅ Register event handler
+  WiFi.begin(ssid, password);
+
+  Serial.println("Connecting to WiFi...");
+}
+
+// ================= SETUP =================
 void setup() {
   Serial.begin(115200);
-  initWiFi();
-  Serial.print("Status: ");
-  Serial.println(WiFi.status());
-  Serial.print("RSSI: ");
-  Serial.println(WiFi.RSSI());
 
+  initWiFi();
 }
 
+// ================= LOOP =================
 void loop() {
-  if (WiFi.status() == WL_CONNECTION_LOST){
-    // Preventive measures to be taken in case of Network Lost
-    initWiFi();
 
+  // Non-blocking monitoring
+  static unsigned long lastCheck = 0;
+
+  if (millis() - lastCheck > 5000) {  // every 5 sec
+    lastCheck = millis();
+
+    Serial.print("Status: ");
+    Serial.println(WiFi.status());
+
+    Serial.print("RSSI: ");
+    Serial.println(WiFi.RSSI());
   }
-
 }
