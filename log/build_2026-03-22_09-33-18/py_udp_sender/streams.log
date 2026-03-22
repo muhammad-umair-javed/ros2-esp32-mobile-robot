@@ -1,0 +1,38 @@
+[0.857s] Invoking command in '/home/umair/ros2-esp32-mobile-robot/src/py_udp_sender': PYTHONPATH=/home/umair/ros2-esp32-mobile-robot/build/py_udp_sender/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/umair/ros2-esp32-mobile-robot/install/py_udp_sender/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/py_udp_sender build --build-base /home/umair/ros2-esp32-mobile-robot/build/py_udp_sender/build install --record /home/umair/ros2-esp32-mobile-robot/build/py_udp_sender/install.log --single-version-externally-managed install_data
+[1.140s] running egg_info
+[1.141s] creating ../../build/py_udp_sender/py_udp_sender.egg-info
+[1.141s] writing ../../build/py_udp_sender/py_udp_sender.egg-info/PKG-INFO
+[1.141s] writing dependency_links to ../../build/py_udp_sender/py_udp_sender.egg-info/dependency_links.txt
+[1.141s] writing entry points to ../../build/py_udp_sender/py_udp_sender.egg-info/entry_points.txt
+[1.142s] writing requirements to ../../build/py_udp_sender/py_udp_sender.egg-info/requires.txt
+[1.142s] writing top-level names to ../../build/py_udp_sender/py_udp_sender.egg-info/top_level.txt
+[1.142s] writing manifest file '../../build/py_udp_sender/py_udp_sender.egg-info/SOURCES.txt'
+[1.144s] reading manifest file '../../build/py_udp_sender/py_udp_sender.egg-info/SOURCES.txt'
+[1.144s] adding license file 'LICENSE'
+[1.144s] writing manifest file '../../build/py_udp_sender/py_udp_sender.egg-info/SOURCES.txt'
+[1.145s] running build
+[1.145s] running build_py
+[1.145s] creating /home/umair/ros2-esp32-mobile-robot/build/py_udp_sender/build
+[1.145s] creating /home/umair/ros2-esp32-mobile-robot/build/py_udp_sender/build/lib
+[1.145s] creating /home/umair/ros2-esp32-mobile-robot/build/py_udp_sender/build/lib/py_udp_sender
+[1.145s] copying py_udp_sender/py_udp_sender.py -> /home/umair/ros2-esp32-mobile-robot/build/py_udp_sender/build/lib/py_udp_sender
+[1.145s] copying py_udp_sender/__init__.py -> /home/umair/ros2-esp32-mobile-robot/build/py_udp_sender/build/lib/py_udp_sender
+[1.145s] running install
+[1.146s] running install_lib
+[1.147s] creating /home/umair/ros2-esp32-mobile-robot/install/py_udp_sender/lib/python3.10/site-packages/py_udp_sender
+[1.147s] copying /home/umair/ros2-esp32-mobile-robot/build/py_udp_sender/build/lib/py_udp_sender/py_udp_sender.py -> /home/umair/ros2-esp32-mobile-robot/install/py_udp_sender/lib/python3.10/site-packages/py_udp_sender
+[1.147s] copying /home/umair/ros2-esp32-mobile-robot/build/py_udp_sender/build/lib/py_udp_sender/__init__.py -> /home/umair/ros2-esp32-mobile-robot/install/py_udp_sender/lib/python3.10/site-packages/py_udp_sender
+[1.147s] byte-compiling /home/umair/ros2-esp32-mobile-robot/install/py_udp_sender/lib/python3.10/site-packages/py_udp_sender/py_udp_sender.py to py_udp_sender.cpython-310.pyc
+[1.148s] byte-compiling /home/umair/ros2-esp32-mobile-robot/install/py_udp_sender/lib/python3.10/site-packages/py_udp_sender/__init__.py to __init__.cpython-310.pyc
+[1.148s] running install_data
+[1.148s] creating /home/umair/ros2-esp32-mobile-robot/install/py_udp_sender/share/ament_index
+[1.148s] creating /home/umair/ros2-esp32-mobile-robot/install/py_udp_sender/share/ament_index/resource_index
+[1.148s] creating /home/umair/ros2-esp32-mobile-robot/install/py_udp_sender/share/ament_index/resource_index/packages
+[1.149s] copying resource/py_udp_sender -> /home/umair/ros2-esp32-mobile-robot/install/py_udp_sender/share/ament_index/resource_index/packages
+[1.149s] copying package.xml -> /home/umair/ros2-esp32-mobile-robot/install/py_udp_sender/share/py_udp_sender
+[1.149s] running install_egg_info
+[1.151s] Copying ../../build/py_udp_sender/py_udp_sender.egg-info to /home/umair/ros2-esp32-mobile-robot/install/py_udp_sender/lib/python3.10/site-packages/py_udp_sender-0.0.0-py3.10.egg-info
+[1.152s] running install_scripts
+[1.174s] Installing sender script to /home/umair/ros2-esp32-mobile-robot/install/py_udp_sender/lib/py_udp_sender
+[1.175s] writing list of installed files to '/home/umair/ros2-esp32-mobile-robot/build/py_udp_sender/install.log'
+[1.198s] Invoked command in '/home/umair/ros2-esp32-mobile-robot/src/py_udp_sender' returned '0': PYTHONPATH=/home/umair/ros2-esp32-mobile-robot/build/py_udp_sender/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/umair/ros2-esp32-mobile-robot/install/py_udp_sender/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/py_udp_sender build --build-base /home/umair/ros2-esp32-mobile-robot/build/py_udp_sender/build install --record /home/umair/ros2-esp32-mobile-robot/build/py_udp_sender/install.log --single-version-externally-managed install_data

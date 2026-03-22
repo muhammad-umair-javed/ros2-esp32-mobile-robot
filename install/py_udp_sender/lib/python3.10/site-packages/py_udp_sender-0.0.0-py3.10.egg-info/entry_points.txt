@@ -1,0 +1,3 @@
+[console_scripts]
+sender = py_udp_sender.py_udp_sender:main
+
