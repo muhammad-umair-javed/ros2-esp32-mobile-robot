@@ -1,13 +1,13 @@
 #include "esp32_motor.h"
 
 // ----------------- PINS -----------------
-const int IN1 = 25;
-const int IN2 = 26;
-const int IN3 = 27;
-const int IN4 = 14;
+const int IN1 = 27;     // Motor 1
+const int IN2 = 26;     
+const int IN3 = 25;     // Motor 2
+const int IN4 = 33; 
 
-const int PWM1 = 32;
-const int PWM2 = 33;
+const int PWM1 = 14;    // Motor 1
+const int PWM2 = 32;    // Motor 2
 
 // ----------------- SPEED -----------------
 int MOTOR_SPEED = 155;
