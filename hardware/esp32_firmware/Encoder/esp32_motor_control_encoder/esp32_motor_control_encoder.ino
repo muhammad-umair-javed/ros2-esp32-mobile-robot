@@ -4,8 +4,8 @@
 
 void setup() {
   // WIFI Credentials
-  ssid = "home";
-  password = "12345678900";
+  ssid = "M_U_J";
+  password = "ros2humble";
   
   Serial.begin(115200);
 
@@ -19,7 +19,7 @@ void setup() {
 
   // Initialize Mootrs
   initMotors(); // Initialize motor pins
-  MOTOR_SPEED = 200;
+  MOTOR_SPEED = 170;
 
   // Encoders Setup
   encoder_init();
@@ -38,6 +38,8 @@ void loop() {
   Serial.print(encData.right_ticks);
   Serial.print(" | Left Motor: ");
   Serial.println(encData.left_ticks);
+
+  delay(50);
 
 }
 
