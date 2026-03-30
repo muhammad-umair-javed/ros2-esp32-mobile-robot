@@ -1,0 +1,39 @@
+running egg_info
+creating ../../build/py_udp_communication/py_udp_communication.egg-info
+writing ../../build/py_udp_communication/py_udp_communication.egg-info/PKG-INFO
+writing dependency_links to ../../build/py_udp_communication/py_udp_communication.egg-info/dependency_links.txt
+writing entry points to ../../build/py_udp_communication/py_udp_communication.egg-info/entry_points.txt
+writing requirements to ../../build/py_udp_communication/py_udp_communication.egg-info/requires.txt
+writing top-level names to ../../build/py_udp_communication/py_udp_communication.egg-info/top_level.txt
+writing manifest file '../../build/py_udp_communication/py_udp_communication.egg-info/SOURCES.txt'
+reading manifest file '../../build/py_udp_communication/py_udp_communication.egg-info/SOURCES.txt'
+writing manifest file '../../build/py_udp_communication/py_udp_communication.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/build
+creating /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/build/lib
+creating /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/build/lib/py_udp_communication
+copying py_udp_communication/py_udp_receiver.py -> /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/build/lib/py_udp_communication
+copying py_udp_communication/py_udp_sender.py -> /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/build/lib/py_udp_communication
+copying py_udp_communication/__init__.py -> /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/build/lib/py_udp_communication
+running install
+running install_lib
+creating /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/python3.10/site-packages/py_udp_communication
+copying /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/build/lib/py_udp_communication/py_udp_receiver.py -> /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/python3.10/site-packages/py_udp_communication
+copying /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/build/lib/py_udp_communication/py_udp_sender.py -> /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/python3.10/site-packages/py_udp_communication
+copying /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/build/lib/py_udp_communication/__init__.py -> /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/python3.10/site-packages/py_udp_communication
+byte-compiling /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/python3.10/site-packages/py_udp_communication/py_udp_receiver.py to py_udp_receiver.cpython-310.pyc
+byte-compiling /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/python3.10/site-packages/py_udp_communication/py_udp_sender.py to py_udp_sender.cpython-310.pyc
+byte-compiling /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/python3.10/site-packages/py_udp_communication/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/share/ament_index
+creating /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/share/ament_index/resource_index
+creating /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/share/ament_index/resource_index/packages
+copying resource/py_udp_communication -> /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/share/ament_index/resource_index/packages
+copying package.xml -> /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/share/py_udp_communication
+running install_egg_info
+Copying ../../build/py_udp_communication/py_udp_communication.egg-info to /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/python3.10/site-packages/py_udp_communication-0.0.0-py3.10.egg-info
+running install_scripts
+Installing receiver script to /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/py_udp_communication
+Installing sender script to /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/py_udp_communication
+writing list of installed files to '/home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/install.log'

@@ -33,7 +33,7 @@ unsigned long       lastCmdTime          = 0;
 const unsigned long CMD_TIMEOUT_MS       = 1000;   // safety stop after 300 ms silence
 
 unsigned long       lastDataSend         = 0;
-const uint16_t      DATA_SEND_INTERVAL_MS = 50;   // send encoder data at 20 Hz
+const uint16_t      DATA_SEND_INTERVAL_MS = 20;   // send encoder data at 50 Hz
 
 // =============================================================
 //  WIFI EVENT HANDLER

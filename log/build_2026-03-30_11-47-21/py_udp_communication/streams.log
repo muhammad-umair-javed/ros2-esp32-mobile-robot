@@ -1,0 +1,25 @@
+[1.086s] Invoking command in '/home/umair/ros2-esp32-mobile-robot/src/py_udp_communication': PYTHONPATH=/home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/py_udp_communication build --build-base /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/build install --record /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/install.log --single-version-externally-managed install_data
+[1.378s] running egg_info
+[1.379s] writing ../../build/py_udp_communication/py_udp_communication.egg-info/PKG-INFO
+[1.379s] writing dependency_links to ../../build/py_udp_communication/py_udp_communication.egg-info/dependency_links.txt
+[1.379s] writing entry points to ../../build/py_udp_communication/py_udp_communication.egg-info/entry_points.txt
+[1.379s] writing requirements to ../../build/py_udp_communication/py_udp_communication.egg-info/requires.txt
+[1.380s] writing top-level names to ../../build/py_udp_communication/py_udp_communication.egg-info/top_level.txt
+[1.382s] reading manifest file '../../build/py_udp_communication/py_udp_communication.egg-info/SOURCES.txt'
+[1.383s] writing manifest file '../../build/py_udp_communication/py_udp_communication.egg-info/SOURCES.txt'
+[1.383s] running build
+[1.383s] running build_py
+[1.383s] copying py_udp_communication/py_udp_receiver.py -> /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/build/lib/py_udp_communication
+[1.384s] running install
+[1.384s] running install_lib
+[1.385s] copying /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/build/lib/py_udp_communication/py_udp_receiver.py -> /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/python3.10/site-packages/py_udp_communication
+[1.386s] byte-compiling /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/python3.10/site-packages/py_udp_communication/py_udp_receiver.py to py_udp_receiver.cpython-310.pyc
+[1.386s] running install_data
+[1.387s] running install_egg_info
+[1.388s] removing '/home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/python3.10/site-packages/py_udp_communication-0.0.0-py3.10.egg-info' (and everything under it)
+[1.389s] Copying ../../build/py_udp_communication/py_udp_communication.egg-info to /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/python3.10/site-packages/py_udp_communication-0.0.0-py3.10.egg-info
+[1.390s] running install_scripts
+[1.413s] Installing receiver script to /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/py_udp_communication
+[1.413s] Installing sender script to /home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/py_udp_communication
+[1.414s] writing list of installed files to '/home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/install.log'
+[1.447s] Invoked command in '/home/umair/ros2-esp32-mobile-robot/src/py_udp_communication' returned '0': PYTHONPATH=/home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/umair/ros2-esp32-mobile-robot/install/py_udp_communication/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/py_udp_communication build --build-base /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/build install --record /home/umair/ros2-esp32-mobile-robot/build/py_udp_communication/install.log --single-version-externally-managed install_data

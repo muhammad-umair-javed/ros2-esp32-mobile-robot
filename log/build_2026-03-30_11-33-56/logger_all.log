@@ -1,0 +1,258 @@
+[0.141s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.142s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=12, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7ad62e890640>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7ad62e890070>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7ad62e890070>>, mixin_verb=('build',))
+[0.346s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.346s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.346s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.346s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.346s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.346s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.346s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/umair/ros2-esp32-mobile-robot'
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts) by extensions ['ignore', 'ignore_ament_install']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts) by extension 'ignore'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts) by extension 'ignore_ament_install'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts) by extensions ['colcon_pkg']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts) by extension 'colcon_pkg'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts) by extensions ['colcon_meta']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts) by extension 'colcon_meta'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts) by extensions ['ros']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts) by extension 'ros'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts) by extensions ['cmake', 'python']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts) by extension 'cmake'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts) by extension 'python'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts) by extensions ['python_setup_py']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts) by extension 'python_setup_py'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_interupt_encoder) by extensions ['ignore', 'ignore_ament_install']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_interupt_encoder) by extension 'ignore'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_interupt_encoder) by extension 'ignore_ament_install'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_interupt_encoder) by extensions ['colcon_pkg']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_interupt_encoder) by extension 'colcon_pkg'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_interupt_encoder) by extensions ['colcon_meta']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_interupt_encoder) by extension 'colcon_meta'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_interupt_encoder) by extensions ['ros']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_interupt_encoder) by extension 'ros'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_interupt_encoder) by extensions ['cmake', 'python']
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_interupt_encoder) by extension 'cmake'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_interupt_encoder) by extension 'python'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_interupt_encoder) by extensions ['python_setup_py']
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_interupt_encoder) by extension 'python_setup_py'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_udp_sample) by extensions ['ignore', 'ignore_ament_install']
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_udp_sample) by extension 'ignore'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_udp_sample) by extension 'ignore_ament_install'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_udp_sample) by extensions ['colcon_pkg']
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_udp_sample) by extension 'colcon_pkg'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_udp_sample) by extensions ['colcon_meta']
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_udp_sample) by extension 'colcon_meta'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_udp_sample) by extensions ['ros']
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_udp_sample) by extension 'ros'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_udp_sample) by extensions ['cmake', 'python']
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_udp_sample) by extension 'cmake'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_udp_sample) by extension 'python'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_udp_sample) by extensions ['python_setup_py']
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(Scripts/esp32_udp_sample) by extension 'python_setup_py'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware) by extensions ['ignore', 'ignore_ament_install']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware) by extension 'ignore'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware) by extension 'ignore_ament_install'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware) by extensions ['colcon_pkg']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware) by extension 'colcon_pkg'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware) by extensions ['colcon_meta']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware) by extension 'colcon_meta'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware) by extensions ['ros']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware) by extension 'ros'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware) by extensions ['cmake', 'python']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware) by extension 'cmake'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware) by extension 'python'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware) by extensions ['python_setup_py']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware) by extension 'python_setup_py'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware) by extensions ['ignore', 'ignore_ament_install']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware) by extension 'ignore'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware) by extension 'ignore_ament_install'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware) by extensions ['colcon_pkg']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware) by extension 'colcon_pkg'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware) by extensions ['colcon_meta']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware) by extension 'colcon_meta'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware) by extensions ['ros']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware) by extension 'ros'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware) by extensions ['cmake', 'python']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware) by extension 'cmake'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware) by extension 'python'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware) by extensions ['python_setup_py']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware) by extension 'python_setup_py'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder) by extensions ['ignore', 'ignore_ament_install']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder) by extension 'ignore'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder) by extension 'ignore_ament_install'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder) by extensions ['colcon_pkg']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder) by extension 'colcon_pkg'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder) by extensions ['colcon_meta']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder) by extension 'colcon_meta'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder) by extensions ['ros']
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder) by extension 'ros'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder) by extensions ['cmake', 'python']
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder) by extension 'cmake'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder) by extension 'python'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder) by extensions ['python_setup_py']
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder) by extension 'python_setup_py'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder/esp32_motor_control_encoder) by extensions ['ignore', 'ignore_ament_install']
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder/esp32_motor_control_encoder) by extension 'ignore'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder/esp32_motor_control_encoder) by extension 'ignore_ament_install'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder/esp32_motor_control_encoder) by extensions ['colcon_pkg']
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder/esp32_motor_control_encoder) by extension 'colcon_pkg'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder/esp32_motor_control_encoder) by extensions ['colcon_meta']
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder/esp32_motor_control_encoder) by extension 'colcon_meta'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder/esp32_motor_control_encoder) by extensions ['ros']
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder/esp32_motor_control_encoder) by extension 'ros'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder/esp32_motor_control_encoder) by extensions ['cmake', 'python']
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder/esp32_motor_control_encoder) by extension 'cmake'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder/esp32_motor_control_encoder) by extension 'python'
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder/esp32_motor_control_encoder) by extensions ['python_setup_py']
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/Encoder/esp32_motor_control_encoder) by extension 'python_setup_py'
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi) by extensions ['ignore', 'ignore_ament_install']
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi) by extension 'ignore'
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi) by extension 'ignore_ament_install'
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi) by extensions ['colcon_pkg']
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi) by extension 'colcon_pkg'
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi) by extensions ['colcon_meta']
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi) by extension 'colcon_meta'
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi) by extensions ['ros']
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi) by extension 'ros'
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi) by extensions ['cmake', 'python']
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi) by extension 'cmake'
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi) by extension 'python'
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi) by extensions ['python_setup_py']
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi) by extension 'python_setup_py'
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_serial) by extensions ['ignore', 'ignore_ament_install']
+[0.365s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_serial) by extension 'ignore'
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_serial) by extension 'ignore_ament_install'
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_serial) by extensions ['colcon_pkg']
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_serial) by extension 'colcon_pkg'
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_serial) by extensions ['colcon_meta']
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_serial) by extension 'colcon_meta'
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_serial) by extensions ['ros']
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_serial) by extension 'ros'
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_serial) by extensions ['cmake', 'python']
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_serial) by extension 'cmake'
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_serial) by extension 'python'
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_serial) by extensions ['python_setup_py']
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_serial) by extension 'python_setup_py'
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_wifi) by extensions ['ignore', 'ignore_ament_install']
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_wifi) by extension 'ignore'
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_wifi) by extension 'ignore_ament_install'
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_wifi) by extensions ['colcon_pkg']
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_wifi) by extension 'colcon_pkg'
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_wifi) by extensions ['colcon_meta']
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_wifi) by extension 'colcon_meta'
+[0.366s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_wifi) by extensions ['ros']
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_wifi) by extension 'ros'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_wifi) by extensions ['cmake', 'python']
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_wifi) by extension 'cmake'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_wifi) by extension 'python'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_wifi) by extensions ['python_setup_py']
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/esp32_firmware/motor_control_serial_wifi/motor_control_wifi) by extension 'python_setup_py'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/schematics) by extensions ['ignore', 'ignore_ament_install']
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/schematics) by extension 'ignore'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/schematics) by extension 'ignore_ament_install'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/schematics) by extensions ['colcon_pkg']
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/schematics) by extension 'colcon_pkg'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/schematics) by extensions ['colcon_meta']
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/schematics) by extension 'colcon_meta'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/schematics) by extensions ['ros']
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/schematics) by extension 'ros'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/schematics) by extensions ['cmake', 'python']
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/schematics) by extension 'cmake'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/schematics) by extension 'python'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/schematics) by extensions ['python_setup_py']
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(hardware/schematics) by extension 'python_setup_py'
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(py_udp_communication) by extensions ['ignore', 'ignore_ament_install']
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(py_udp_communication) by extension 'ignore'
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(py_udp_communication) by extension 'ignore_ament_install'
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(py_udp_communication) by extensions ['colcon_pkg']
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(py_udp_communication) by extension 'colcon_pkg'
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(py_udp_communication) by extensions ['colcon_meta']
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(py_udp_communication) by extension 'colcon_meta'
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(py_udp_communication) by extensions ['ros']
+[0.368s] Level 1:colcon.colcon_core.package_identification:_identify(py_udp_communication) by extension 'ros'
+[0.381s] DEBUG:colcon.colcon_core.package_identification:Package 'py_udp_communication' with type 'ros.ament_python' and name 'py_udp_communication'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'ignore'
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'ignore_ament_install'
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extensions ['colcon_pkg']
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'colcon_pkg'
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extensions ['colcon_meta']
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'colcon_meta'
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extensions ['ros']
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_interfaces) by extension 'ros'
+[0.382s] DEBUG:colcon.colcon_core.package_identification:Package 'src/custom_interfaces' with type 'ros.ament_cmake' and name 'custom_interfaces'
+[0.383s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_communication) by extensions ['ignore', 'ignore_ament_install']
+[0.383s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_communication) by extension 'ignore'
+[0.383s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_communication) by extension 'ignore_ament_install'
+[0.383s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_communication) by extensions ['colcon_pkg']
+[0.383s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_communication) by extension 'colcon_pkg'
+[0.383s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_communication) by extensions ['colcon_meta']
+[0.383s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_communication) by extension 'colcon_meta'
+[0.383s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_communication) by extensions ['ros']
+[0.383s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_communication) by extension 'ros'
+[0.384s] DEBUG:colcon.colcon_core.package_identification:Package 'src/py_udp_communication' with type 'ros.ament_python' and name 'py_udp_communication'
+[0.384s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_sender) by extensions ['ignore', 'ignore_ament_install']
+[0.384s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_sender) by extension 'ignore'
+[0.384s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_sender) by extension 'ignore_ament_install'
+[0.384s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_sender) by extensions ['colcon_pkg']
+[0.384s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_sender) by extension 'colcon_pkg'
+[0.384s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_sender) by extensions ['colcon_meta']
+[0.384s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_sender) by extension 'colcon_meta'
+[0.384s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_sender) by extensions ['ros']
+[0.384s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_udp_sender) by extension 'ros'
+[0.385s] DEBUG:colcon.colcon_core.package_identification:Package 'src/py_udp_sender' with type 'ros.ament_python' and name 'py_udp_sender'
+[0.385s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.385s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.385s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.385s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.385s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.406s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.406s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.407s] WARNING:colcon.colcon_core.prefix_path.colcon:The path '/home/umair/ros2-esp32-mobile-robot/src/install' in the environment variable COLCON_PREFIX_PATH doesn't exist
+[0.407s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/umair/ros2-esp32-mobile-robot/src/install/py_udp_sender' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.407s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/umair/ros2-esp32-mobile-robot/src/install/pu_udp_communication' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.407s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/umair/ros2-esp32-mobile-robot/src/install/custom_interfaces' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.407s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/umair/ros2-esp32-mobile-robot/src/install/custom_interfaces' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.410s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 467 installed packages in /opt/ros/humble
+[0.413s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.473s] ERROR:colcon:colcon build: Duplicate package names not supported:
+- py_udp_communication:
+  - py_udp_communication
+  - src/py_udp_communication

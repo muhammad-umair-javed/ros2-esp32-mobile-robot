@@ -1,0 +1,6 @@
+source;share/py_udp_communication/hook/pythonpath.ps1
+source;share/py_udp_communication/hook/pythonpath.dsv
+source;share/py_udp_communication/hook/pythonpath.sh
+source;share/py_udp_communication/hook/ament_prefix_path.ps1
+source;share/py_udp_communication/hook/ament_prefix_path.dsv
+source;share/py_udp_communication/hook/ament_prefix_path.sh

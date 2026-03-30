@@ -1,0 +1,4 @@
+[console_scripts]
+receiver = py_udp_communication.py_udp_receiver:main
+sender = py_udp_communication.py_udp_sender:main
+

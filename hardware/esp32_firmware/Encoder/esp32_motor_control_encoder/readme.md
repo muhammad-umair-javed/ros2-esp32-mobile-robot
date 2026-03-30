@@ -41,7 +41,7 @@ Firmware for an ESP32-based differential drive robot that communicates with a RO
 │   UDP socket (CMD_PORT :4210)    UDP_SEND socket (:4213)    │
 │   ┌─────────────────────┐        ┌──────────────────────┐   │
 │   │   udp_receive_cmd() │        │ udp_send_encoder_    │   │
-│   │   parse "D,PWM"     │        │ data() @ 20 Hz       │   │
+│   │   parse "D,PWM"     │        │ data() @ 50 Hz       │   │
 │   └────────┬────────────┘        └──────────┬───────────┘   │
 │            │                                │               │
 │   commandMotor(dir, pwm)         encData ◄──┘               │
