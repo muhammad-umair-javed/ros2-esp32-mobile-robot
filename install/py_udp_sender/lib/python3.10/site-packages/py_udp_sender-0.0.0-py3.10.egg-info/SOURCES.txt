@@ -10,6 +10,7 @@ setup.py
 ../../build/py_udp_sender/py_udp_sender.egg-info/top_level.txt
 ../../build/py_udp_sender/py_udp_sender.egg-info/zip-safe
 py_udp_sender/__init__.py
+py_udp_sender/py_udp_receiver.py
 py_udp_sender/py_udp_sender.py
 resource/py_udp_sender
 test/test_copyright.py

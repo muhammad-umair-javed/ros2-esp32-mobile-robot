@@ -1,54 +1,64 @@
+// =============================================================
+//  MAIN — ESP32 Differential Drive Robot
+//  Handles: WiFi init, UDP communication, motors, encoders
+// =============================================================
+
 #include "Encoder.h"
 #include "esp32_udp.h"
 #include "esp32_motor.h"
 
+// -----------------------------------------------------------------
 void setup() {
-  // WIFI Credentials
-  ssid = "M_U_J";
-  password = "ros2humble";
-  
   Serial.begin(115200);
+  delay(500);
 
-  // Initialize Wifi Communication via UDP Protocol
+  // ── WiFi ──────────────────────────────────────────────────────
   initWiFi();
 
-    // Begin UDP listening
-  UDP.begin(UDP_PORT);
-  Serial.print("Listening on UDP port ");
-  Serial.println(UDP_PORT);
+  // Wait until connected before starting UDP
+  Serial.print("Waiting for WiFi");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("\nWiFi Connected!");
 
-  // Initialize Mootrs
-  initMotors(); // Initialize motor pins
-  MOTOR_SPEED = 170;
+  // ── UDP ───────────────────────────────────────────────────────
+  UDP.begin(CMD_PORT);        // listen for commands  on :4210
+  UDP_SEND.begin(4213);       // send encoder data    from :4213  →  PC:4212
+  Serial.print("Listening for commands on UDP port ");
+  Serial.println(CMD_PORT);
 
-  // Encoders Setup
+  // ── Motors & Encoders ─────────────────────────────────────────
+  initMotors();
   encoder_init();
-  Serial.println("Simple Modular Encoder System Started");
+
+  Serial.println("ESP32 Robot Ready!");
 }
 
+// -----------------------------------------------------------------
 void loop() {
-  // Encoder Ticks Count
-  encData.left_ticks = getLeftTicks();
+  // 1. Read encoders into the shared struct
+  encData.left_ticks  = getLeftTicks();
   encData.right_ticks = getRightTicks();
-  encData.timestamp = millis();
+  encData.timestamp   = (uint32_t)millis();
 
-  cmd = udp_receive_send();
-  commandMotor(cmd.direction, cmd.pwm);
-  Serial.print("Right Motor: ");
-  Serial.print(encData.right_ticks);
-  Serial.print(" | Left Motor: ");
-  Serial.println(encData.left_ticks);
+  // 2. Push encoder data to PC at fixed rate (rate set in esp32_udp.cpp)
+  udp_send_encoder_data();
 
-  delay(50);
+  // 3. Check for new command; apply it or safety-stop on timeout
+  if (udp_receive_cmd()) {
+    commandMotor(cmd.direction, cmd.pwm);
+    Serial.print("CMD → dir: "); Serial.print(cmd.direction);
+    Serial.print("  pwm: ");     Serial.println(cmd.pwm);
+  }
+  else if (millis() - lastCmdTime > CMD_TIMEOUT_MS) {
+    stopMotors();   // no command received within timeout window
+  }
 
+  // 4. Debug encoder output
+  Serial.print("L: "); Serial.print(encData.left_ticks);
+  Serial.print("  R: "); Serial.println(encData.right_ticks);
+
+  delay(20);   // ~50 Hz main loop
 }
-
-
-
-
-
-
-
-
-
-

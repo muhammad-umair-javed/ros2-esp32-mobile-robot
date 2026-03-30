@@ -1,105 +1,94 @@
 #include "esp32_motor.h"
 
-// ----------------- PINS -----------------
-const int IN1 = 27;     // Motor 1
-const int IN2 = 26;     
-const int IN3 = 25;     // Motor 2
-const int IN4 = 33; 
+// =============================================================
+//  PIN DEFINITIONS
+// =============================================================
 
-const int PWM1 = 14;    // Motor 1
-const int PWM2 = 32;    // Motor 2
+const int IN1  = 27;   // Motor A — direction
+const int IN2  = 26;
+const int IN3  = 25;   // Motor B — direction
+const int IN4  = 33;
 
-// ----------------- SPEED -----------------
-int MOTOR_SPEED = 155;
-int pwm1Value = MOTOR_SPEED;
-int pwm2Value = MOTOR_SPEED;
+const int PWM1 = 14;   // Motor A — speed
+const int PWM2 = 32;   // Motor B — speed
 
-// ----------------- INITIALIZATION -----------------
+// =============================================================
+//  SPEED
+// =============================================================
+
+int MOTOR_SPEED = 170;   // default speed (0–255)
+
+// =============================================================
+//  HELPERS
+// =============================================================
+
+static int clampPWM(int value) {
+  if (value < 0)   return 0;
+  if (value > 255) return 255;
+  return value;
+}
+
+// =============================================================
+//  INITIALIZATION
+// =============================================================
+
 void initMotors() {
-  pinMode(IN1, OUTPUT);
-  pinMode(IN2, OUTPUT);
-  pinMode(IN3, OUTPUT);
-  pinMode(IN4, OUTPUT);
-
+  pinMode(IN1, OUTPUT); pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT); pinMode(IN4, OUTPUT);
   pinMode(PWM1, OUTPUT);
   pinMode(PWM2, OUTPUT);
-
-  stopMotors(); // Ensure motors stopped initially
+  stopMotors();   // always start in stopped state
 }
 
-// ----------------- MOTOR COMMAND -----------------
-void commandMotor(char cmd, uint pwm) {
+// =============================================================
+//  MOTOR COMMAND
+//  direction: 'F' | 'B' | 'L' | 'R' | 'S'
+//  pwm:        0–255
+// =============================================================
+
+void commandMotor(char direction, uint8_t pwm) {
   MOTOR_SPEED = clampPWM(pwm);
-  cmd = toupper(cmd);
-  switch (cmd) {
-    case 'F': // Forward
-      digitalWrite(IN1, HIGH);
-      digitalWrite(IN2, LOW);
-      digitalWrite(IN3, HIGH);
-      digitalWrite(IN4, LOW);
+  direction   = toupper(direction);
 
-      analogWrite(PWM1, MOTOR_SPEED);
-      analogWrite(PWM2, MOTOR_SPEED);
+  switch (direction) {
+
+    case 'F':   // Forward — both motors forward
+      digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW);
+      digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW);
       break;
 
-    case 'B': // Backward
-      digitalWrite(IN1, LOW);
-      digitalWrite(IN2, HIGH);
-      digitalWrite(IN3, LOW);
-      digitalWrite(IN4, HIGH);
-
-      analogWrite(PWM1, MOTOR_SPEED);
-      analogWrite(PWM2, MOTOR_SPEED);
+    case 'B':   // Backward — both motors reverse
+      digitalWrite(IN1, LOW);  digitalWrite(IN2, HIGH);
+      digitalWrite(IN3, LOW);  digitalWrite(IN4, HIGH);
       break;
 
-    case 'L': // Turn Left
-      digitalWrite(IN1, LOW);
-      digitalWrite(IN2, HIGH);
-      digitalWrite(IN3, HIGH);
-      digitalWrite(IN4, LOW);
-
-      analogWrite(PWM1, MOTOR_SPEED);
-      analogWrite(PWM2, MOTOR_SPEED);
+    case 'L':   // Turn Left in-place — A reverse, B forward
+      digitalWrite(IN1, LOW);  digitalWrite(IN2, HIGH);
+      digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW);
       break;
 
-    case 'R': // Turn Right
-      digitalWrite(IN1, HIGH);
-      digitalWrite(IN2, LOW);
-      digitalWrite(IN3, LOW);
-      digitalWrite(IN4, HIGH);
-
-      analogWrite(PWM1, MOTOR_SPEED);
-      analogWrite(PWM2, MOTOR_SPEED);
+    case 'R':   // Turn Right in-place — A forward, B reverse
+      digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW);
+      digitalWrite(IN3, LOW);  digitalWrite(IN4, HIGH);
       break;
 
-    case 'S': // Stop
+    case 'S':
+    default:    // Stop (unknown command also stops for safety)
       stopMotors();
-      break;
-
-    default:
-      Serial.println("Invalid command");
+      return;   // return early — don't apply PWM after stopping
   }
-  Serial.print("Command Executed: ");
-  Serial.println(cmd);
-}
-
-// ----------------- STOP MOTORS -----------------
-void stopMotors() {
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, LOW);
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, LOW);
-
-  pwm1Value = 0;
-  pwm2Value = 0;
 
   analogWrite(PWM1, MOTOR_SPEED);
   analogWrite(PWM2, MOTOR_SPEED);
 }
 
-// ----------------- CLAMP FUNCTION -----------------
-int clampPWM(int value, int minVal, int maxVal) {
-  if (value < minVal) return minVal;
-  if (value > maxVal) return maxVal;
-  return value;
+// =============================================================
+//  STOP MOTORS
+// =============================================================
+
+void stopMotors() {
+  digitalWrite(IN1, LOW); digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW); digitalWrite(IN4, LOW);
+  analogWrite(PWM1, 0);
+  analogWrite(PWM2, 0);
 }

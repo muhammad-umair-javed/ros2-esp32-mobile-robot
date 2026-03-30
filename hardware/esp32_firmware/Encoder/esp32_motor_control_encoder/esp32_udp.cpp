@@ -1,45 +1,63 @@
 #include "esp32_udp.h"
 
-// ----------------- CONFIG VALUES -----------------
-char* ssid = "M_U_J";
-char* password = "ros2humble";
-const char* hostname = "ros2-esp32-robot-";
+// =============================================================
+//  CONFIGURATION
+// =============================================================
+
+char*       ssid     = "M_U_J";
+char*       password = "ros2humble";
+const char* hostname = "ros2-esp32-robot";
 
 IPAddress local_IP(192, 168, 0, 200);
-IPAddress gateway(192, 168, 0, 1);
-IPAddress subnet(255, 255, 255, 0);
-IPAddress primaryDNS(192, 168, 1, 1);
-IPAddress secondaryDNS(0, 0, 0, 0);
+IPAddress gateway(192, 168, 0,   1);
+IPAddress subnet(255, 255, 255,  0);
+IPAddress primaryDNS(192, 168,   1, 1);
+IPAddress secondaryDNS(0, 0,     0, 0);
+IPAddress pcIP(0, 0, 0, 0);   // learned dynamically from first command
+bool pcIPknown = false;        // flag — don't send data until we know where to send
 
-IPAddress pcIP(192, 168, 0, 111);
-const uint16_t UDP_PORT = 4210;
-WiFiUDP UDP;
-char packet[256];
+// ── UDP Instances ─────────────────────────────────────────────
+WiFiUDP UDP;        // receives commands
+WiFiUDP UDP_SEND;   // sends encoder data
 
-// Data for communication
-EncoderData encData;
-ControlCommand cmd;
-// ================= WIFI EVENT HANDLER =================
+// ── Port Numbers ─────────────────────────────────────────────
+const uint16_t CMD_PORT  = 4210;   // ESP32 listens for commands here
+const uint16_t DATA_PORT = 4212;   // PC (ROS2 receiver) listens here
+
+// ── Shared Data ───────────────────────────────────────────────
+EncoderData    encData = {0, 0, 0};
+ControlCommand cmd     = {'S', 0};
+
+// ── Timing ───────────────────────────────────────────────────
+unsigned long       lastCmdTime          = 0;
+const unsigned long CMD_TIMEOUT_MS       = 1000;   // safety stop after 300 ms silence
+
+unsigned long       lastDataSend         = 0;
+const uint16_t      DATA_SEND_INTERVAL_MS = 50;   // send encoder data at 20 Hz
+
+// =============================================================
+//  WIFI EVENT HANDLER
+// =============================================================
+
 void WiFiEventHandler(WiFiEvent_t event) {
-  switch(event) {
+  switch (event) {
     case ARDUINO_EVENT_WIFI_STA_START:
-      Serial.println("WiFi Started");
+      Serial.println("[WiFi] Started");
       break;
 
     case ARDUINO_EVENT_WIFI_STA_CONNECTED:
-      Serial.println("Connected to AP");
+      Serial.println("[WiFi] Connected to AP");
       break;
 
     case ARDUINO_EVENT_WIFI_STA_GOT_IP:
-      Serial.print("Got IP: ");
+      Serial.print("[WiFi] IP Address: ");
       Serial.println(WiFi.localIP());
-      Serial.print("MAC Address: ");
+      Serial.print("[WiFi] MAC Address: ");
       Serial.println(WiFi.macAddress());
       break;
 
     case ARDUINO_EVENT_WIFI_STA_DISCONNECTED:
-      Serial.println("WiFi Lost Connection!");
-      Serial.println("Reconnecting...");
+      Serial.println("[WiFi] Connection lost! Reconnecting...");
       WiFi.reconnect();
       break;
 
@@ -48,52 +66,69 @@ void WiFiEventHandler(WiFiEvent_t event) {
   }
 }
 
-// ================= WIFI INIT =================
+// =============================================================
+//  WIFI INIT
+// =============================================================
+
 void initWiFi() {
   WiFi.mode(WIFI_STA);
   WiFi.setHostname(hostname);
 
   if (!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS)) {
-    Serial.println("Static IP Config Failed!");
+    Serial.println("[WiFi] Static IP config failed!");
   }
 
   WiFi.onEvent(WiFiEventHandler);
   WiFi.begin(ssid, password);
 
-  Serial.println("Connecting to WiFi...");
+  Serial.println("[WiFi] Connecting...");
 }
 
-// ================= UDP COMMUNICATION =================
-ControlCommand udp_receive_send() {
+// =============================================================
+//  UDP — RECEIVE COMMAND
+//  Parses "D,PWM\0" format e.g. "F,170"
+//  Returns: true if a valid command was received
+// =============================================================
 
+bool udp_receive_cmd() {
   int packetSize = UDP.parsePacket();
-  if (packetSize) {
-    Serial.print("Received packet! Size: ");
-    Serial.println(packetSize); 
+  if (packetSize <= 0) return false;
 
-    int len = UDP.read(packet, 255);
-    if (len > 0) packet[len] = '\0';
-
-    Serial.print("Packet received: ");
-    Serial.println(packet);
-
-    // 🔹 Example expected format: "F,150"
-    char dir;
-    int pwmVal;
-
-    if (sscanf(packet, "%c,%d", &dir, &pwmVal) == 2) {
-      cmd.direction = dir;
-      cmd.pwm = constrain(pwmVal, 0, 255);
-      Serial.print(cmd.direction);
-      Serial.print(',');
-      Serial.println(cmd.direction);
-    }
-
-    // Send back encoder data
-    UDP.beginPacket(UDP.remoteIP(), UDP.remotePort());
-    UDP.write((uint8_t*)&encData, sizeof(encData));
-    UDP.endPacket();
+  // ── Learn PC's IP from whoever sent the command ──────────────
+  if (!pcIPknown) {
+    pcIP     = UDP.remoteIP();   // grab sender's IP automatically
+    pcIPknown = true;
+    Serial.print("[UDP] PC IP learned: ");
+    Serial.println(pcIP);
   }
 
-  return cmd;
+  char packet[64] = {0};
+  int  len        = UDP.read(packet, sizeof(packet) - 1);
+  if (len <= 0) return false;
+  packet[len] = '\0';
+
+  char dir;
+  int  pwmVal;
+  if (sscanf(packet, "%c,%d", &dir, &pwmVal) == 2) {
+    cmd.direction = toupper(dir);
+    cmd.pwm       = (uint8_t)constrain(pwmVal, 0, 255);
+    lastCmdTime   = millis();
+    return true;
+  }
+
+  return false;
+}
+// =============================================================
+//  UDP — SEND ENCODER DATA
+//  Sends encData struct to PC:DATA_PORT at fixed interval
+//  Flow: ESP32:4213 ──▶ PC:4212
+// =============================================================
+void udp_send_encoder_data() {
+  if (!pcIPknown) return;   // ← don't send until we know the PC's IP
+  if (millis() - lastDataSend < DATA_SEND_INTERVAL_MS) return;
+
+  lastDataSend = millis();
+  UDP_SEND.beginPacket(pcIP, DATA_PORT);
+  UDP_SEND.write((uint8_t*)&encData, sizeof(encData));
+  UDP_SEND.endPacket();
 }

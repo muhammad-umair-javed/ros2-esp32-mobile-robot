@@ -1,0 +1,28 @@
+{
+  "package_name": "custom_interfaces",
+  "output_dir": "/home/umair/ros2-esp32-mobile-robot/build/custom_interfaces/rosidl_generator_rs/custom_interfaces",
+  "template_dir": "/opt/ros/humble/share/rosidl_generator_rs/cmake/../resource",
+  "idl_tuples": [
+    "/home/umair/ros2-esp32-mobile-robot/build/custom_interfaces/rosidl_adapter/custom_interfaces:msg/EncoderData.idl"
+  ],
+  "ros_interface_files": [
+    "/home/umair/ros2-esp32-mobile-robot/build/custom_interfaces/rosidl_adapter/custom_interfaces/msg/EncoderData.idl"
+  ],
+  "target_dependencies": [
+    "/opt/ros/humble/share/rosidl_generator_rs/cmake/../../../lib/rosidl_generator_rs/rosidl_generator_rs",
+    "/opt/ros/humble/share/rosidl_generator_rs/cmake/../../../local/lib/python3.10/dist-packages/rosidl_generator_rs/__init__.py",
+    "/opt/ros/humble/share/rosidl_generator_rs/cmake/../resource/action.rs.em",
+    "/opt/ros/humble/share/rosidl_generator_rs/cmake/../resource/action/rmw.rs.em",
+    "/opt/ros/humble/share/rosidl_generator_rs/cmake/../resource/msg.rs.em",
+    "/opt/ros/humble/share/rosidl_generator_rs/cmake/../resource/msg/rmw.rs.em",
+    "/opt/ros/humble/share/rosidl_generator_rs/cmake/../resource/srv.rs.em",
+    "/opt/ros/humble/share/rosidl_generator_rs/cmake/../resource/srv/rmw.rs.em",
+    "/opt/ros/humble/share/rosidl_generator_rs/cmake/../resource/templates/msg_idiomatic.rs.em",
+    "/opt/ros/humble/share/rosidl_generator_rs/cmake/../resource/templates/msg_rmw.rs.em",
+    "/opt/ros/humble/share/rosidl_generator_rs/cmake/../resource/templates/srv_idiomatic.rs.em",
+    "/opt/ros/humble/share/rosidl_generator_rs/cmake/../resource/templates/srv_rmw.rs.em",
+    "/home/umair/ros2-esp32-mobile-robot/build/custom_interfaces/rosidl_adapter/custom_interfaces/msg/EncoderData.idl",
+    "/home/umair/ros2-esp32-mobile-robot/build/custom_interfaces/rosidl_adapter/custom_interfaces/msg/EncoderData.idl"
+  ],
+  "package_version": "0.0.0"
+}

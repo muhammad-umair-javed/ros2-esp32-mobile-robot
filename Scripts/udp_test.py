@@ -9,7 +9,7 @@ ESP32_PORT = 4210
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # Bind to receive data (important!)
-sock.bind(("0.0.0.0", 4210))
+sock.bind(("0.0.0.0", 4212))
 
 print("Listening...")
 

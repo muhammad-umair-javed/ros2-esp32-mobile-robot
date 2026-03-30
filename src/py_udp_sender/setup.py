@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'sender = py_udp_sender.py_udp_sender:main',
+            'receiver = py_udp_sender.py_udp_receiver:main' 
         ],
     },
 )

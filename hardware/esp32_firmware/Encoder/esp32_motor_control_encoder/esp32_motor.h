@@ -3,21 +3,33 @@
 
 #include <Arduino.h>
 
-// ----------------- PINS -----------------
-extern const int IN1;
-extern const int IN2;
-extern const int IN3;
-extern const int IN4;
-extern const int PWM1;
-extern const int PWM2;
+// =============================================================
+//  PIN DECLARATIONS (defined in esp32_motor.cpp)
+// =============================================================
 
-// ----------------- SPEED -----------------
-extern int MOTOR_SPEED;
+extern const int IN1;    // Motor A direction pin 1
+extern const int IN2;    // Motor A direction pin 2
+extern const int IN3;    // Motor B direction pin 1
+extern const int IN4;    // Motor B direction pin 2
 
-// ----------------- FUNCTIONS -----------------
-void initMotors();                 // Setup motor pins
-void commandMotor(char cmd, uint pwm);      // Execute motor command
-void stopMotors();                 // Stop both motors
-int clampPWM(int value, int minVal = 0, int maxVal = 255); // Clamp PWM value
+extern const int PWM1;   // Motor A PWM pin
+extern const int PWM2;   // Motor B PWM pin
 
-#endif
+// =============================================================
+//  SPEED (defined in esp32_motor.cpp)
+// =============================================================
+
+extern int MOTOR_SPEED;  // default drive speed (0–255)
+
+// =============================================================
+//  FUNCTION DECLARATIONS
+// =============================================================
+
+void initMotors();
+
+// direction: 'F' forward | 'B' backward | 'L' left | 'R' right | 'S' stop
+void commandMotor(char direction, uint8_t pwm);
+
+void stopMotors();
+
+#endif // ESP32_MOTOR_H

@@ -1,71 +1,64 @@
 #include "Encoder.h"
 
-// ==========================
-// Global Variables (ISR shared)
-// ==========================
+// =============================================================
+//  TICK COUNTERS
+//  volatile — modified inside ISR, read in main context
+// =============================================================
 
-volatile int32_t rightTicks = 0;   // Right Motor Tick Counter
-volatile int32_t leftTicks  = 0;   // Left Motor Tick Counter
+volatile int32_t rightTicks = 0;
+volatile int32_t leftTicks  = 0;
 
-// ==========================
-// Interrupt Service Routines
-// ==========================
+// =============================================================
+//  INTERRUPT SERVICE ROUTINES
+//  IRAM_ATTR — must run from IRAM for reliable ISR execution
+//  Counts one tick per RISING edge (single-channel encoder)
+// =============================================================
 
-// GPIO34 → Right Motor Encoder
-void IRAM_ATTR rightEncoderISR() {
-    rightTicks++;
-}
+void IRAM_ATTR rightEncoderISR() { rightTicks++; }
+void IRAM_ATTR leftEncoderISR()  { leftTicks++;  }
 
-// GPIO35 → Left Motor Encoder
-void IRAM_ATTR leftEncoderISR() {
-    leftTicks++;
-}
-
-// ==========================
-// Initialization Function
-// ==========================
+// =============================================================
+//  INITIALIZATION
+// =============================================================
 
 void encoder_init() {
+  pinMode(RIGHT_ENCODER_PIN, INPUT);   // GPIO34/35 have no internal pull-up
+  pinMode(LEFT_ENCODER_PIN,  INPUT);   // add external 10kΩ pull-up if signal is noisy
 
-    // Configure pins as input
-    pinMode(RIGHT_ENCODER_PIN, INPUT);  // GPIO34 – Input only
-    pinMode(LEFT_ENCODER_PIN, INPUT);   // GPIO35 – Input only
-
-    // Attach interrupts
-    attachInterrupt(digitalPinToInterrupt(RIGHT_ENCODER_PIN), rightEncoderISR, RISING);
-    attachInterrupt(digitalPinToInterrupt(LEFT_ENCODER_PIN), leftEncoderISR, RISING);
+  attachInterrupt(digitalPinToInterrupt(RIGHT_ENCODER_PIN), rightEncoderISR, RISING);
+  attachInterrupt(digitalPinToInterrupt(LEFT_ENCODER_PIN),  leftEncoderISR,  RISING);
 }
 
-// ==========================
-// Getter Functions
-// ==========================
+// =============================================================
+//  TICK READERS — interrupt-safe
+// =============================================================
 
 int32_t getRightTicks() {
-    noInterrupts();
-    int32_t temp = rightTicks;
-    interrupts();
-    return temp;
+  noInterrupts();
+  int32_t val = rightTicks;
+  interrupts();
+  return val;
 }
 
 int32_t getLeftTicks() {
-    noInterrupts();
-    int32_t temp = leftTicks;
-    interrupts();
-    return temp;
+  noInterrupts();
+  int32_t val = leftTicks;
+  interrupts();
+  return val;
 }
 
-// ==========================
-// Reset Functions
-// ==========================
+// =============================================================
+//  TICK RESETTERS — interrupt-safe
+// =============================================================
 
 void resetRightTicks() {
-    noInterrupts();
-    rightTicks = 0;
-    interrupts();
+  noInterrupts();
+  rightTicks = 0;
+  interrupts();
 }
 
 void resetLeftTicks() {
-    noInterrupts();
-    leftTicks = 0;
-    interrupts();
+  noInterrupts();
+  leftTicks = 0;
+  interrupts();
 }

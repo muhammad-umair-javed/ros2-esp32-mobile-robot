@@ -3,28 +3,28 @@
 
 #include <Arduino.h>
 
-// ==========================
-// Pin Definitions
-// ==========================
-// GPIO34 → Right Motor Encoder
-// GPIO35 → Left Motor Encoder
+// =============================================================
+//  PIN DEFINITIONS
+//  GPIO34 and GPIO35 are input-only pins on the ESP32
+//  — no internal pull-up/pull-down available on these pins
+// =============================================================
 
-#define RIGHT_ENCODER_PIN 34   // GPIO34 – Right Motor Encoder Input
-#define LEFT_ENCODER_PIN  35   // GPIO35 – Left Motor Encoder Input
+#define RIGHT_ENCODER_PIN  34
+#define LEFT_ENCODER_PIN   35
 
-// ==========================
-// Function Prototypes
-// ==========================
+// =============================================================
+//  FUNCTION DECLARATIONS
+// =============================================================
 
-// Initialization
+// Call once in setup() — attaches interrupts to encoder pins
 void encoder_init();
 
-// Get ticks
+// Returns current tick count (interrupt-safe read)
 int32_t getRightTicks();
 int32_t getLeftTicks();
 
-// Reset ticks
+// Resets tick counter to zero (interrupt-safe write)
 void resetRightTicks();
 void resetLeftTicks();
 
-#endif
+#endif // ENCODER_H
